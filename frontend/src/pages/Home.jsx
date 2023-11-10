@@ -17,8 +17,8 @@ export default function Home () {
                 </div>
 
                 <div className="buttons pt-7 text-center text-text-shade font-serif tracking-wider">
-                    <Link to="/login"><button className="px-2 py-1 w-20 rounded-md border-2 border-text-shade mr-5 text-center">Login</button></Link>
-                    <Link to="/signup"><button className="px-2 py-1 w-20 border-2 rounded-md border-text-shade text-center">Signup</button></Link>
+                    <Link to="/login"><button className="px-2 py-1 w-20 rounded-md border-2 border-text-shade mr-5 text-center hover:text-white hover:bg-text-shade">Login</button></Link>
+                    <Link to="/signup"><button className="px-2 py-1 w-20 border-2 rounded-md border-text-shade text-center hover:text-white hover:bg-text-shade">Signup</button></Link>
                 </div>
             </div>
             
