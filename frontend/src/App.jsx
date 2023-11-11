@@ -5,6 +5,8 @@ import ChooseLogin from "./pages/Login pages/ChooseLogin";
 import ArtistLogin from "./pages/Login pages/ArtistLogin";
 import AudienceLogin from "./pages/Login pages/AudienceLogin";
 import ChooseSignup from "./pages/Signup Pages/ChooseSignup";
+import ArtistSignup from "./pages/Signup Pages/ArtistSignup";
+import AudienceSignup from "./pages/Signup Pages/AudienceSignup";
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
 
         <Routes>
           <Route path="/signup" element={<ChooseSignup />}/>
+          <Route path="/signup/artist" element={<ArtistSignup />}/>
+          <Route path="/signup/audience" element={<AudienceSignup />}/>
         </Routes>
       </BrowserRouter>
     </>
