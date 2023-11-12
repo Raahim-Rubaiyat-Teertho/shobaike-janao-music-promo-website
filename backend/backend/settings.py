@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+
+    'artist'
 ]
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
