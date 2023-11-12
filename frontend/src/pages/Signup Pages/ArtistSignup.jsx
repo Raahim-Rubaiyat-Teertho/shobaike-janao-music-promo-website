@@ -9,8 +9,10 @@ export default function ArtistSignup() {
                     <div className="form-part">
                         <form className="flex items-center flex-col text-center justify-center pt-6">
                             <input type="email" placeholder="Email" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
-                            <input type="text" placeholder="Your Band Name" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
+                            <input type="text" placeholder="Your Band's Name" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
                             <input type="password" placeholder="Choose a password" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
+                            <input type="text" placeholder="Which city are you from?" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
+                            <input type="text" placeholder="What is your genre?" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
                             <button className="px-2 py-1 w-20 border-2 rounded-md border-text-shade text-center hover:text-white hover:bg-text-shade mt-4">Submit</button>
                         </form>
                     </div>
