@@ -1,5 +1,12 @@
+import { useState } from "react"
+
 export default function ArtistSignup() {
     document.title = 'Signup | Artist'
+    function handleArtistSubmit () {
+        
+    }
+    const [data, setData] = useState({email : '', name : '', password : '', })
+
     return (
         <>
             <div className="flex items-center flex-col text-center justify-center min-h-screen min-w-screen bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300">
@@ -7,7 +14,7 @@ export default function ArtistSignup() {
                     <h1 className="font-medium text-3xl font-serif tracking-tight text-text-shade">Join As An Artist!</h1>
 
                     <div className="form-part">
-                        <form className="flex items-center flex-col text-center justify-center pt-6">
+                        <form className="flex items-center flex-col text-center justify-center pt-6" onSubmit={handleArtistSubmit}>
                             <input type="email" placeholder="Email" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
                             <input type="text" placeholder="Your Band's Name" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
                             <input type="password" placeholder="Choose a password" className="m-3 p-1 bg-inherit placeholder:text-text-shade border-2 border-b-text-shade border-t-0 border-l-0 border-r-0"/>
