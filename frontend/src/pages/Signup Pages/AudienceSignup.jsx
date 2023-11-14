@@ -3,11 +3,35 @@ import { useState } from "react";
 export default function AudienceSignup() {
     document.title = 'Signup | Audience';
     
-    const [data, setData] = useState({email : '', username : '', password : ''})
+    const [data, setData] = useState({email : '', username : '', password : '', followed_artists : []})
 
-    const handleAudienceSubmit = (e) => {
+    const handleAudienceSubmit = async (e) => {
         e.preventDefault();
-        console.log(data);
+        let check = "http://127.0.0.1:8000/audience/audience-list-email/" + data.email
+        
+        try {
+            const res = await fetch(check);
+            const res_json = await res.json();
+            alert('The email address is already taken. Use another email address.')
+        }
+
+        catch {
+            const res = await fetch("http://127.0.0.1:8000/audience/signup/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if(res.ok) {
+                window.location.href = "http://localhost:5173/login/audience";
+            }
+
+            else {
+                alert('There has been an error. Please try again.');
+            }
+        }
     }
     return (
         <>
