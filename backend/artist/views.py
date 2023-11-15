@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ArtistSerializer
+from .serializers import ArtistSerializer, ArtistSessionSerializer
 
 from .models import Artist
 
@@ -46,3 +47,38 @@ def artistSignup(request):
         serializer.save()
 
     return Response(serializer.data)
+
+# @csrf_exempt
+# def post_session_data(request):
+#     if(request.method == 'POST'):
+#         data = request.POST
+
+#         print(data)
+#         for key, value in data.items():
+#             request.session[key] = value
+
+#         request.session.save()
+#         print(request.session['key1'])
+#         return JsonResponse({'message': 'Session data updated successfully'})
+
+#     else:
+#         return JsonResponse({'message' : 'Method not allowed'}, status=405)
+    
+@api_view(['POST'])
+def artistSession(request):
+    serializer = ArtistSessionSerializer(data=request.data)
+
+    if(serializer.is_valid()):
+        data = serializer.validated_data
+        print(data)
+        for key, value in data.items():
+            request.session[key] = value
+        
+        return Response({'data': data})
+    return Response({'message': 'Invalid data'}, status=400)
+
+@api_view(['GET'])
+def artistSessionGet(request):
+    session_data = dict(request.session.items())
+    print(session_data)
+    return JsonResponse(session_data)
