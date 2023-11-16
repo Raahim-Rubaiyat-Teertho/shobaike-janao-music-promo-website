@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-export default function Navbar() {
+export default function Navbar(props) {
     const username = localStorage.getItem('username');
     return (
         <>
@@ -9,7 +9,7 @@ export default function Navbar() {
                     <div className="posts mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Artist Posts</Link></button></div>
                     <div className="create mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Create A Post</Link></button></div>
                     <div className="album-reviews mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Album Reviews</Link></button></div>
-                    <div className="profile mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`/artist/${username}`}>Profile</Link></button></div>
+                    <div className="profile mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`/${props.type}/${username}`}>Profile</Link></button></div>
                 </div>
                 <div className="logout hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Logout</Link></button></div>
             </div>
