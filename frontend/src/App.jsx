@@ -8,6 +8,7 @@ import ChooseSignup from "./pages/Signup Pages/ChooseSignup";
 import ArtistSignup from "./pages/Signup Pages/ArtistSignup";
 import AudienceSignup from "./pages/Signup Pages/AudienceSignup";
 import ArtistProfile from "./pages/Profile Pages/ArtistProfile";
+import AudienceProfile from "./pages/Profile Pages/AudienceProfile";
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
 
         <Routes>
           <Route path="/artist/:username" element={<ArtistProfile />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/audience/:username" element={<AudienceProfile />} />
         </Routes>
 
         <Routes>
