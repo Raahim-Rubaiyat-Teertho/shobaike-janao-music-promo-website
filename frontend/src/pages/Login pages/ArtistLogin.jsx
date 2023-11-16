@@ -23,7 +23,7 @@ export default function ArtistLogin() {
 
             else {
                 // Fetch for session
-                
+                localStorage.setItem('username', res_json.name);
                 window.location.href = '/artist/' + res_json.name;
             }
         }
