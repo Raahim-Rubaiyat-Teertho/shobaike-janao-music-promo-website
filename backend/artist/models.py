@@ -10,3 +10,11 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
+
+class ArtistPost(models.Model):
+    posted_by = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    body = models.TextField()
+    upvotes = models.IntegerField(null=True, default=0)
+
+    def __str__(self):
+        return f"Post by {self.posted_by.name}"

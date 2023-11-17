@@ -4,9 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ArtistSerializer, ArtistSessionSerializer
+from .serializers import ArtistSerializer, ArtistSessionSerializer, ArtistPostSerializer
 
-from .models import Artist
+from .models import Artist, ArtistPost
 
 def index(request):
     return HttpResponse("Hello, world. You're at the artist index.")
@@ -82,3 +82,32 @@ def artistSessionGet(request):
     session_data = dict(request.session.items())
     print(session_data)
     return JsonResponse(session_data)
+
+
+#posts views
+@api_view(['GET'])
+def artistPosts(request):
+    posts = ArtistPost.objects.all()
+    serializer = ArtistPostSerializer(posts, many = True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def createPostArtist(request):
+    serializer = ArtistPostSerializer(data=request.data)
+
+    if(serializer.is_valid()):
+        serializer.save()
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def artistPostsbyPostId(request, pk):
+    post = ArtistPost.objects.get(id = pk)
+    serializer = ArtistPostSerializer(post)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def artistPostsbyArtistId(request, pk):
+    post = ArtistPost.objects.filter(posted_by = pk)
+    serializer = ArtistPostSerializer(post, many=True)
+    return Response(serializer.data)
