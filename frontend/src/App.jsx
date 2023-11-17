@@ -9,6 +9,7 @@ import ArtistSignup from "./pages/Signup Pages/ArtistSignup";
 import AudienceSignup from "./pages/Signup Pages/AudienceSignup";
 import ArtistProfile from "./pages/Profile Pages/ArtistProfile";
 import AudienceProfile from "./pages/Profile Pages/AudienceProfile";
+import ArtistLogout from "./pages/Logout Pages/ArtistLogout";
 
 function App() {
 
@@ -41,6 +42,10 @@ function App() {
 
         <Routes>
           <Route path="/artist/redirect" element={<Navigate to={"/artist/:username"} />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/artist/logout" element = {<ArtistLogout />} />
         </Routes>
       </BrowserRouter>
     </>

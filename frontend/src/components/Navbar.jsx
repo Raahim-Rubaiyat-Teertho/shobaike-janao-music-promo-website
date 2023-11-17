@@ -7,11 +7,11 @@ export default function Navbar(props) {
                 <div className="logo">Shobaike Janao!</div>
                 <div className="navigate flex justify-around">
                     <div className="posts mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Artist Posts</Link></button></div>
-                    <div className="create mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Create A Post</Link></button></div>
+                    {/* <div className="create mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Create A Post</Link></button></div> */}
                     <div className="album-reviews mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`#`}>Album Reviews</Link></button></div>
                     <div className="profile mr-7 hover:text-base ease-in-out duration-300"><button><Link to={`/${props.type}/${username}`}>Profile</Link></button></div>
                 </div>
-                <div className="logout"><button><Link to={`#`}>Logout</Link></button></div>
+                <div className="logout"><button><Link to={'/artist/logout'}>Logout</Link></button></div>
             </div>
         </>
     )

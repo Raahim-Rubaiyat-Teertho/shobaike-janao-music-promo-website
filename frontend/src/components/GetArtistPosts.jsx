@@ -40,7 +40,7 @@ export default function GetArtistPosts() {
     return (
         <>
             {
-                <PostCard d = {data}/>
+                <PostCard d = {data} type = {'account'}/>
             }
 
         </>
