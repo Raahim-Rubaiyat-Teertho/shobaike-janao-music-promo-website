@@ -11,5 +11,9 @@ urlpatterns = [
     path("signup/", views.artistSignup, name='artistSignup'),
     path('api/post-session', views.artistSession, name='artistSession'),
     path("api/get-session/", views.artistSessionGet, name='get_session_data'),
-    # path("api/post-session-data/", views.post_session_data, name='post_session_data')
+    # path("api/post-session-data/", views.post_session_data, name='post_session_data'),
+    path("posts/", views.artistPosts, name='artistPosts'),
+    path("posts/create/", views.createPostArtist, name='createPostArtist'),
+    path("posts/<str:pk>", views.artistPostsbyPostId, name='artistPostsbyPostId'),
+    path("posts-by/<str:pk>", views.artistPostsbyArtistId, name='artistPostsbyArtistId')
 ]
