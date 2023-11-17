@@ -39,6 +39,12 @@ def artistDetailEmail(request, pk):
     serializer = ArtistSerializer(artist, many = False)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def artistDetailId(request, pk):
+    artist = Artist.objects.get(id = pk)
+    serializer = ArtistSerializer(artist, many = False)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 def artistSignup(request):
     serializer = ArtistSerializer(data=request.data)
