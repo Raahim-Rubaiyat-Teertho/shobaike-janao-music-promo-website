@@ -16,5 +16,6 @@ urlpatterns = [
     path("posts/", views.artistPosts, name='artistPosts'),
     path("posts/create/", views.createPostArtist, name='createPostArtist'),
     path("posts/<str:pk>", views.artistPostsbyPostId, name='artistPostsbyPostId'),
-    path("posts-by/<str:pk>", views.artistPostsbyArtistId, name='artistPostsbyArtistId')
+    path("posts-by/<str:pk>", views.artistPostsbyArtistId, name='artistPostsbyArtistId'),
+    path('posts/upvotes/<str:pk>', views.getPostUpvoteById, name='getPostUpvoteById')
 ]

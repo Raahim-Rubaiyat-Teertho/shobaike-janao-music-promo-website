@@ -4,9 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ArtistSerializer, ArtistSessionSerializer, ArtistPostSerializer
+from .serializers import ArtistSerializer, ArtistSessionSerializer, ArtistPostSerializer, PostUpvoteSerializer
 
-from .models import Artist, ArtistPost
+from .models import Artist, ArtistPost, PostUpvote
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return HttpResponse("Hello, world. You're at the artist index.")
@@ -116,4 +117,10 @@ def artistPostsbyPostId(request, pk):
 def artistPostsbyArtistId(request, pk):
     post = ArtistPost.objects.filter(posted_by = pk)
     serializer = ArtistPostSerializer(post, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getPostUpvoteById(request, pk):
+    post = PostUpvote.objects.filter(post_id=pk)
+    serializer = PostUpvoteSerializer(post, many=True)
     return Response(serializer.data)
