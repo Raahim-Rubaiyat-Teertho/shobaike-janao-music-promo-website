@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Artist(models.Model):
     name = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
@@ -18,3 +19,11 @@ class ArtistPost(models.Model):
 
     def __str__(self):
         return f"Post by {self.posted_by.name}"
+    
+class PostUpvote(models.Model):
+    post = models.ForeignKey('artist.ArtistPost', on_delete=models.CASCADE)
+    voted_by_artists = models.ManyToManyField('artist.Artist')
+    voted_by_audiences = models.ManyToManyField('audience.Audience')
+
+    def __str__(self):
+        return f"Upvotes for {self.post}"

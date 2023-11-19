@@ -1,4 +1,4 @@
-from .models import Artist, ArtistPost
+from .models import Artist, ArtistPost, PostUpvote
 from rest_framework import serializers
 
 class ArtistSerializer(serializers.ModelSerializer):
@@ -13,4 +13,9 @@ class ArtistSessionSerializer(serializers.Serializer):
 class ArtistPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArtistPost
+        fields = "__all__"
+
+class PostUpvoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostUpvote
         fields = "__all__"
