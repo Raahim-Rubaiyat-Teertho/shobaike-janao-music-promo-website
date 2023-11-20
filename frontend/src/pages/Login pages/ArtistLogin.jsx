@@ -25,6 +25,8 @@ export default function ArtistLogin() {
                 // Fetch for session
                 localStorage.setItem('username', res_json.name);
                 window.location.href = '/artist/' + res_json.name;
+                const acc_type = 'artist'
+                localStorage.setItem('acc_type', acc_type);
             }
         }
 

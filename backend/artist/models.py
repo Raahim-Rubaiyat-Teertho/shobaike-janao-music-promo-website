@@ -22,8 +22,8 @@ class ArtistPost(models.Model):
     
 class PostUpvote(models.Model):
     post = models.ForeignKey('artist.ArtistPost', on_delete=models.CASCADE)
-    voted_by_artists = models.ManyToManyField('artist.Artist')
-    voted_by_audiences = models.ManyToManyField('audience.Audience')
+    voted_by_artists = models.ManyToManyField('artist.Artist', blank=True)
+    voted_by_audiences = models.ManyToManyField('audience.Audience', blank=True)
 
     def __str__(self):
         return f"Upvotes for {self.post}"

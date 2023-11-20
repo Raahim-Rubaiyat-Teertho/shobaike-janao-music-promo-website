@@ -15,6 +15,8 @@ export default function AudienceLogin() {
 
             if(lnk_json.password == data.password && lnk_json.email == data.email) {
                 localStorage.setItem('username', lnk_json.username);
+                const acc_type = 'audience'
+                localStorage.setItem('acc_type', acc_type);
                 window.location.href = '/audience/' + lnk_json.username;
             }
 
