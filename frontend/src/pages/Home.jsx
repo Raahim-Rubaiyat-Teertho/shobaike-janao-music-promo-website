@@ -4,7 +4,7 @@ export default function Home () {
     document.title = 'Shobaike Janao'
     return (
         <>
-            <div className="flex items-center flex-col text-center justify-center min-h-screen min-w-screen bg-gradient-to-t from-blue-100 via-blue-200 to-blue-300">
+            <div className="flex items-center flex-col text-center justify-center min-h-screen min-w-screen bg-gradient-to-t from-pink-200 via-blue-200 to-blue-300">
                 <h1 className="font-medium text-7xl font-serif tracking-tight text-text-shade">Shobaike Janao!</h1>
                 <div className="artist pt-7  font-serif text-text-shade">
                     <h2 className="tracking-wider text-2xl">Are You An Artist?</h2>
