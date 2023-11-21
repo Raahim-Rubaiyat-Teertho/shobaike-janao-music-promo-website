@@ -124,3 +124,14 @@ def getPostUpvoteById(request, pk):
     post = PostUpvote.objects.filter(post_id=pk)
     serializer = PostUpvoteSerializer(post, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def updateVotes(request, pk):
+    vote = ArtistPost.objects.get(id=pk)
+    upvote = PostUpvote.objects.get(post=vote.id)
+    serializer = PostUpvoteSerializer(instance = upvote, data = request.data)
+
+    if(serializer.is_valid()):
+        serializer.save()
+
+    return Response(serializer.data)
