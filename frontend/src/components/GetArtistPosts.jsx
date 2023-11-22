@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import PostCard from "./PostCard";
 
-export default function GetArtistPosts() {
+export default function GetArtistPosts(props) {
     const [data, setData] = useState([]);
     const username = localStorage.getItem('username');
     const u_id = "http://127.0.0.1:8000/artist/artist-detail/" + username;

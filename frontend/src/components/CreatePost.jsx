@@ -37,6 +37,7 @@ export default function CreatePost(props) {
       if (response.ok) {
         // Reset the form after successful submission
         setData({ posted_by: '', body: '', upvotes: '' });
+        setPosted(true)
       } else {
         console.error("Error submitting post:", response.statusText);
       }
