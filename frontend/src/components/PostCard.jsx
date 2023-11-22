@@ -25,7 +25,7 @@ export default function PostCard(props) {
             }
         }, []
     )
-
+    
     return (
         <>
             {   
