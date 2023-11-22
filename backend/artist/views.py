@@ -8,6 +8,7 @@ from .serializers import ArtistSerializer, ArtistSessionSerializer, ArtistPostSe
 
 from .models import Artist, ArtistPost, PostUpvote
 from django.shortcuts import get_object_or_404
+from rest_framework import status
 
 def index(request):
     return HttpResponse("Hello, world. You're at the artist index.")
@@ -123,4 +124,34 @@ def artistPostsbyArtistId(request, pk):
 def getPostUpvoteById(request, pk):
     post = PostUpvote.objects.filter(post_id=pk)
     serializer = PostUpvoteSerializer(post, many=True)
+    return Response(serializer.data)
+
+# @api_view(['POST'])
+# def updateVotes(request, pk):
+#     vote = ArtistPost.objects.get(id=pk)
+#     upvote = get_object_or_404(PostUpvote, post=vote.id)
+#     serializer = PostUpvoteSerializer(instance = upvote, data = request.data)
+
+#     if(serializer.is_valid()):
+#         serializer.save()
+
+#     return Response(serializer.data)
+
+@api_view(['PUT'])
+def updateVotes(request, pk):
+    # Get the ArtistPost instance based on the provided primary key (id)
+    vote = get_object_or_404(ArtistPost, id=pk)
+
+    # Get or create the corresponding PostUpvote instance for the ArtistPost
+    upvote, created = PostUpvote.objects.get_or_create(post=vote)
+
+    # Create a serializer instance with the existing or new PostUpvote instance and request data
+    serializer = PostUpvoteSerializer(instance=upvote, data=request.data)
+
+    # Validate and save the serializer
+    if serializer.is_valid():
+        serializer.save()
+
+    print(serializer.data)
+
     return Response(serializer.data)
