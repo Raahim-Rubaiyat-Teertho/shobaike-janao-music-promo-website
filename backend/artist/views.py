@@ -139,16 +139,11 @@ def getPostUpvoteById(request, pk):
 
 @api_view(['PUT'])
 def updateVotes(request, pk):
-    # Get the ArtistPost instance based on the provided primary key (id)
     vote = get_object_or_404(ArtistPost, id=pk)
-
-    # Get or create the corresponding PostUpvote instance for the ArtistPost
     upvote, created = PostUpvote.objects.get_or_create(post=vote)
 
-    # Create a serializer instance with the existing or new PostUpvote instance and request data
     serializer = PostUpvoteSerializer(instance=upvote, data=request.data)
 
-    # Validate and save the serializer
     if serializer.is_valid():
         serializer.save()
 
