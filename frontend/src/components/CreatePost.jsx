@@ -4,6 +4,7 @@ export default function CreatePost(props) {
   const [data, setData] = useState({ body: '', posted_by: '', upvotes: 0});
   const [artistId, setArtistId] = useState();
   const username = localStorage.getItem('username');
+  const acc_type = localStorage.getItem('acc_type');
 
   useEffect(() => {
     const fetchArtistId = async () => {
