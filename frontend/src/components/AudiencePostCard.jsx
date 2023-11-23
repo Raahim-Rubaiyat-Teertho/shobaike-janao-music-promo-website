@@ -8,7 +8,9 @@ export default function AudiencePostCard(props) {
     const [audience, setAudience] = useState(false)
     const [hoverStates, setHoverStates] = useState(Array(props.d.length).fill(false));
     const acc_type = localStorage.getItem('acc_type');
-    const username = localStorage.getItem('username')
+    const username = localStorage.getItem('username');
+    
+    const [id, setId] = useState()
 
     const handleMouseEnter = (index) => {
         const newHoverStates = [...hoverStates];
@@ -22,11 +24,30 @@ export default function AudiencePostCard(props) {
         setHoverStates(newHoverStates);
       };
 
+    const userID = async () => {
+        try {
+            const lnk = "http://127.0.0.1:8000/audience/audience-list/" + username;
+            const lnk_fetch = await fetch(lnk);
+            const lnk_fetch_json = await lnk_fetch.json();
+            setId(lnk_fetch_json.id)
+        }
+    
+        catch (err) {
+            console.log(err);
+        }
+    }
+
     useEffect(
         () => {
             if(acc_type == 'audience') {
                 setAudience(true)
             }
+        }, []
+    )
+
+    useEffect(
+        () => {
+            userID();
         }, []
     )
     
@@ -43,14 +64,14 @@ export default function AudiencePostCard(props) {
                             </div>
                             
 
-                            {/* {
-                                audience && hoverStates[index] && (
+                            {
+                                audience && hoverStates[index] && (id === i.posted_by) && (
                                     <div className="btns mt-5">
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>
                                     </div>
                                 )
-                            } */}
+                            }
                         </div>
                     )
                 )
