@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import FindArtistById from "./FindArtistById";
+import FindAudienceById from "./FindAudienceById";
 import GetUpvotes from "./GetUpvotes";
+import GetUserUpvotes from "./GetUserUpvotes";
 
-export default function PostCard(props) {
-    const [artist, setArtist] = useState(false)
+export default function AudiencePostCard(props) {
+    const [audience, setAudience] = useState(false)
     const [hoverStates, setHoverStates] = useState(Array(props.d.length).fill(false));
     const acc_type = localStorage.getItem('acc_type');
 
@@ -21,8 +22,8 @@ export default function PostCard(props) {
 
     useEffect(
         () => {
-            if(acc_type == 'artist') {
-                setArtist(true)
+            if(acc_type == 'audience') {
+                setAudience(true)
             }
         }, []
     )
@@ -33,15 +34,15 @@ export default function PostCard(props) {
                 props.d.slice().reverse().map(
                     (i, index) => (
                         <div key={i.id} className="m-6 mb-16 border-2 border-gray-400 shadow-lg p-4 mx-32 rounded-md" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}>
-                            <h1 className="font-robot font-light pb-5"><strong>{<FindArtistById id = {i.posted_by}/>}</strong></h1>
+                            <h1 className="font-robot font-light pb-5"><strong>{<FindAudienceById id = {i.posted_by}/>}</strong></h1>
                             <p className="font-robot font-light">{i.body}</p>
                             <div className="upvotes flex mt-5">
-                            <GetUpvotes id = {i.id}/>
+                            <GetUserUpvotes id = {i.id}/>
                             </div>
                             
 
                             {
-                                artist && hoverStates[index] &&(
+                                audience && hoverStates[index] &&(
                                     <div className="btns mt-5">
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>

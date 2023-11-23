@@ -11,7 +11,7 @@ import ArtistProfile from "./pages/Profile Pages/ArtistProfile";
 import AudienceProfile from "./pages/Profile Pages/AudienceProfile";
 import ArtistLogout from "./pages/Logout Pages/ArtistLogout";
 import ArtistPosts from "./pages/Posts Pages/ArtistPosts";
-
+import AudienceLogout from "./pages/Logout Pages/ArtistLogout";
 function App() {
 
   return (
@@ -41,12 +41,16 @@ function App() {
           <Route path="/audience/:username" element={<AudienceProfile />} />
         </Routes>
 
-        <Routes>
+        {/* <Routes>
           <Route path="/artist/redirect" element={<Navigate to={"/artist/:username"} />} />
-        </Routes>
+        </Routes> */}
 
         <Routes>
           <Route path="/artist/logout" element = {<ArtistLogout />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/audience/logout" element = {<AudienceLogout />} />
         </Routes>
 
         <Routes>

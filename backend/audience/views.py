@@ -37,6 +37,12 @@ def audienceDetail(request, pk):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def audienceDetailId(request, pk):
+    user = Audience.objects.get(id = pk)
+    serializer = AudienceSerializer(user, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def audienceDetailEmail(request, pk):
     user = Audience.objects.get(email = pk)
     serializer = AudienceSerializer(user, many=False)

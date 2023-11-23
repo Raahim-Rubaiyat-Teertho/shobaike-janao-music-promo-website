@@ -7,6 +7,7 @@ urlpatterns = [
     path("api/", views.apiOverview, name="apiOverview"),
     path("audience-list/", views.audienceList, name="audienceList"),
     path("audience-list/<str:pk>", views.audienceDetail, name="audienceDetail"),
+    path("audience-detail-id/<str:pk>", views.audienceDetailId, name="audienceDetailId"),
     path("audience-list-email/<str:pk>", views.audienceDetailEmail, name="audienceDetailEmail"),
     path('signup/', views.audienceSignup, name="audienceSignup"),
     path('posts/', views.audiencePosts, name='audiencePosts'),
