@@ -98,7 +98,7 @@ export default function GetUserUpvotes(props) {
                     console.log(newData);
 
                     axios
-                        .put(`http://127.0.0.1:8000/artist/posts/update-upvotes/${props.id}`, newData)
+                        .put(`http://127.0.0.1:8000/audience/posts/update-upvotes/${props.id}`, newData)
                         .then((res) => {
                             console.log(res);
                             setHvcRan(!hvcRan);
@@ -127,7 +127,7 @@ export default function GetUserUpvotes(props) {
                     console.log(newData);
 
                     axios
-                        .put(`http://127.0.0.1:8000/artist/posts/update-upvotes/${props.id}`, newData)
+                        .put(`http://127.0.0.1:8000/audience/posts/update-upvotes/${props.id}`, newData)
                         .then((res) => {
                             console.log(res);
                             setHvcRan(!hvcRan);

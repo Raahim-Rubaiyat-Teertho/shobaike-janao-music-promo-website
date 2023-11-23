@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import FindAudienceById from "./FindAudienceById";
 import GetUpvotes from "./GetUpvotes";
 import GetUserUpvotes from "./GetUserUpvotes";
+import fetchUserId from "./GetUserId";
 
 export default function AudiencePostCard(props) {
     const [audience, setAudience] = useState(false)
     const [hoverStates, setHoverStates] = useState(Array(props.d.length).fill(false));
     const acc_type = localStorage.getItem('acc_type');
+    const username = localStorage.getItem('username')
 
     const handleMouseEnter = (index) => {
         const newHoverStates = [...hoverStates];
@@ -41,14 +43,14 @@ export default function AudiencePostCard(props) {
                             </div>
                             
 
-                            {
-                                audience && hoverStates[index] &&(
+                            {/* {
+                                audience && hoverStates[index] && (
                                     <div className="btns mt-5">
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>
                                     </div>
                                 )
-                            }
+                            } */}
                         </div>
                     )
                 )

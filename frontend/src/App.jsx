@@ -12,6 +12,7 @@ import AudienceProfile from "./pages/Profile Pages/AudienceProfile";
 import ArtistLogout from "./pages/Logout Pages/ArtistLogout";
 import ArtistPosts from "./pages/Posts Pages/ArtistPosts";
 import AudienceLogout from "./pages/Logout Pages/ArtistLogout";
+import AudiencePosts from "./pages/Posts Pages/AudiencePosts";
 function App() {
 
   return (
@@ -55,6 +56,10 @@ function App() {
 
         <Routes>
           <Route path="/posts/artists" element = {<ArtistPosts />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/posts/audiences" element = {<AudiencePosts />} />
         </Routes>
       </BrowserRouter>
     </>

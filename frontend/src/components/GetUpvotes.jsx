@@ -141,6 +141,61 @@ export default function GetUpvotes(props) {
 
         } else {
             // Handle for audiences (if needed)
+            if(voted == false){
+                try {
+                    console.log("here");
+                    const audience_id = await fetchUserId(uname, acc_type);
+
+                    audiencesVoted.push(audience_id);
+                    console.log(audiencesVoted);
+
+                    const newData = {
+                        post : props.id,
+                        voted_by_artists: artistsvoted,
+                        voted_by_audiences: audiencesVoted
+                    };
+                    console.log(newData);
+
+                    axios
+                        .put(`http://127.0.0.1:8000/artist/posts/update-upvotes/${props.id}`, newData)
+                        .then((res) => {
+                            console.log(res);
+                            setHvcRan(!hvcRan);
+                        });
+                    console.log(jsonData);
+                } catch (err) {
+                    console.log(err);
+                }
+
+
+            }
+
+            else {
+                try {
+                    console.log("here");
+                    const audience_id = await fetchUserId(uname, acc_type);
+
+                    const updatedAudiencesVoted = audiencesVoted.filter(id => id !== audience_id);
+                    console.log(updatedAudiencesVoted);
+
+                    const newData = {
+                        post : props.id,
+                        voted_by_artists: artistsvoted,
+                        voted_by_audiences: updatedAudiencesVoted,
+                    };
+                    console.log(newData);
+
+                    axios
+                        .put(`http://127.0.0.1:8000/artist/posts/update-upvotes/${props.id}`, newData)
+                        .then((res) => {
+                            console.log(res);
+                            setHvcRan(!hvcRan);
+                        });
+                    console.log(jsonData);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
         }
     };
 
