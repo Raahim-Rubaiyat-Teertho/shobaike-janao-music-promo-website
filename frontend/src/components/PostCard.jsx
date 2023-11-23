@@ -40,14 +40,14 @@ export default function PostCard(props) {
                             </div>
                             
 
-                            {
+                            {/* {
                                 artist && hoverStates[index] &&(
                                     <div className="btns mt-5">
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
                                         <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>
                                     </div>
                                 )
-                            }
+                            } */}
                         </div>
                     )
                 )
