@@ -72,6 +72,13 @@ def createPostAudience(request):
 
     return Response(serializer.data)
 
+@api_view(['DELETE'])
+def deletePostAudience(request, pk):
+    post = AudiencePost.objects.get(id=pk)
+    post.delete()
+
+    return HttpResponse('Deleted')
+
 @api_view(['GET'])
 def audiencePostsbyPostId(request, pk):
     post = AudiencePost.objects.get(id = pk)

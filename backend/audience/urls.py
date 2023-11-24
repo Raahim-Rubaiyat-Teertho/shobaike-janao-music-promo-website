@@ -12,6 +12,7 @@ urlpatterns = [
     path('signup/', views.audienceSignup, name="audienceSignup"),
     path('posts/', views.audiencePosts, name='audiencePosts'),
     path("posts/create/", views.createPostAudience, name='createPostAudience'),
+    path("posts/delete/<str:pk>", views.deletePostAudience, name='deletePostAudience'),
     path("posts/<str:pk>", views.audiencePostsbyPostId, name='audiencePostsbyPostId'),
     path("posts-by/<str:pk>", views.audiencePostsbyAudienceId, name='audiencePostsbyAudienceId'),
     path('posts/upvotes/<str:pk>', views.getAudiencePostUpvoteById, name='getAudiencePostUpvoteById'),
