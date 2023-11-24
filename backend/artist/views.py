@@ -120,6 +120,13 @@ def artistPostsbyArtistId(request, pk):
     serializer = ArtistPostSerializer(post, many=True)
     return Response(serializer.data)
 
+@api_view(['DELETE'])
+def deletePostArtist(request, pk):
+    post = ArtistPost.objects.get(id=pk)
+    post.delete()
+
+    return HttpResponse('Deleted')
+
 @api_view(['GET'])
 def getPostUpvoteById(request, pk):
     post = PostUpvote.objects.filter(post_id=pk)

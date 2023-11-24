@@ -37,6 +37,26 @@ export default function AudiencePostCard(props) {
         }
     }
 
+    const handleAudiencePostDelete = async (id) => {
+        const shouldDelete = window.confirm('Are you sure you want to delete this post?');
+
+        if(!shouldDelete) {
+            alert('The post was not deleted');
+            return;
+       }
+
+       else {
+        
+        const u = `http://127.0.0.1:8000/audience/posts/delete/${id}`;
+
+        const u_fetch = await fetch(u, {
+            method: 'DELETE'
+        });
+        props.setDeletedPost(true);
+       }
+
+    }
+
     useEffect(
         () => {
             if(acc_type == 'audience') {
@@ -67,8 +87,7 @@ export default function AudiencePostCard(props) {
                             {
                                 audience && hoverStates[index] && (id === i.posted_by) && (
                                     <div className="btns mt-5">
-                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
-                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>
+                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm hover:bg-red-700" onClick={() => handleAudiencePostDelete(i.id)}>Delete</button>
                                     </div>
                                 )
                             }

@@ -15,6 +15,7 @@ urlpatterns = [
     # path("api/post-session-data/", views.post_session_data, name='post_session_data'),
     path("posts/", views.artistPosts, name='artistPosts'),
     path("posts/create/", views.createPostArtist, name='createPostArtist'),
+    path("posts/delete/<str:pk>", views.deletePostArtist, name='deletePostArtist'),
     path("posts/<str:pk>", views.artistPostsbyPostId, name='artistPostsbyPostId'),
     path("posts-by/<str:pk>", views.artistPostsbyArtistId, name='artistPostsbyArtistId'),
     path('posts/upvotes/<str:pk>', views.getPostUpvoteById, name='getPostUpvoteById'),

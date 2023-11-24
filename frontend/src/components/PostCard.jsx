@@ -8,6 +8,7 @@ export default function PostCard(props) {
     const acc_type = localStorage.getItem('acc_type');
     const username = localStorage.getItem('username');
     const [id, setId] = useState();
+    
 
     const handleMouseEnter = (index) => {
         const newHoverStates = [...hoverStates];
@@ -32,6 +33,26 @@ export default function PostCard(props) {
         catch (err) {
             console.log(err);
         }
+    }
+
+    const handlePostDelete = async (id) => {
+        const shouldDelete = window.confirm('Are you sure you want to delete this post?');
+
+        if(!shouldDelete) {
+            alert('The post was not deleted');
+            return;
+       }
+
+       else {
+        
+        const u = `http://127.0.0.1:8000/artist/posts/delete/${id}`;
+
+        const u_fetch = await fetch(u, {
+            method: 'DELETE'
+        });
+        props.setDeletedPost(true);
+       }
+
     }
 
     useEffect(
@@ -63,8 +84,7 @@ export default function PostCard(props) {
                             {
                                 artist && hoverStates[index] && (id === i.posted_by) && (
                                     <div className="btns mt-5">
-                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Update</button>
-                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm">Delete</button>
+                                        <button className="p-2 mr-3 bg-gray-600 text-white rounded-md text-sm hover:bg-red-700" onClick={() => handlePostDelete(i.id)}>Delete</button>
                                     </div>
                                 )
                             }

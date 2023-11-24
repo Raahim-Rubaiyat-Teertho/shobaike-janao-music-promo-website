@@ -4,6 +4,7 @@ import PostCard from "./PostCard";
 export default function FetchArtistPosts () {
     const lnk = "http://127.0.0.1:8000/artist/posts/";
     const [data, setData] = useState([]);
+    const [deletedPost, setDeletedPost] = useState(false);
     
     const getPosts = async () => {
         try{
@@ -20,7 +21,8 @@ export default function FetchArtistPosts () {
     useEffect(
         () => {
             getPosts();
-        }, []
+            setDeletedPost(false);
+        }, [deletedPost]
     )
 
     // useEffect(
@@ -31,7 +33,7 @@ export default function FetchArtistPosts () {
 
     return (
         <>
-            <PostCard d = {data}/>
+            <PostCard d={data} deletedPost={deletedPost} setDeletedPost={setDeletedPost} />
         </>
     )
 }
